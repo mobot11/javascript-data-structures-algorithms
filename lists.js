@@ -1,16 +1,16 @@
 function LinkedList() {
 
-    var Node = function(element) {
+    let Node = function(element) {
         this.element = element;
         this.next = null;
     };
 
-    var length = 0;
-    var head = null;
+    let length = 0;
+    let head = null;
 
     this.append = function(element) {
         //adds a new item to end of list
-        var node = new Node(element),
+        let node = new Node(element),
             current;
         //if list is empty, element is head
         if (head === null) {
@@ -32,13 +32,13 @@ function LinkedList() {
         if (position >= 0 && position <=length) {
 
             //our new element with next = null
-            var node = new Node(element);
+            let node = new Node(element);
             //current originally references the head
-            var current = head;
-            //variable for previous we will use later
-            var previous;
+            let current = head;
+            //letiable for previous we will use later
+            let previous;
             //a counter to see when we hit our position
-            var index = 0;
+            let index = 0;
             //if it is the first element
             if (position === 0) {
                 //node.next = head
@@ -71,7 +71,7 @@ function LinkedList() {
         //removes an item from a specified position in the list
         //check for out of bounds
         if (position > -1 && position < length) {
-            var current = head, previous,
+            let current = head, previous,
             index = 0;
 
             if(position === 0) {
@@ -104,7 +104,7 @@ function LinkedList() {
     this.indexOf = function(element) {
         //returns the index of the element in the list, if the element is not in the list, it returns -1
 
-        var current = head, index = -1;
+        let current = head, index = -1;
 
         while(current) {
             if (element === current.element) {
@@ -125,7 +125,7 @@ function LinkedList() {
     };
 
     this.toString = function() {
-        var current = head, string = '';
+        let current = head, string = '';
 
         while (current) {
             string += current.element;
