@@ -115,6 +115,71 @@ console.log(rotateArray(shiftThis, 7));
 
 // Explain and implement a serialization of a binary tree.
 
+/**
+2  * Definition for a binary tree node.
+3  * function TreeNode(val) {
+4  *     this.val = val;
+5  *     this.left = this.right = null;
+6  * }
+7  */
+8 /**
+9  * Encodes a tree to a single string.
+10  *
+11  * @param {TreeNode} root
+12  * @return {string}
+13  */
+14 var serialize = function(root) {
+15     var res = "";
+16     LDR(root);
+17     if(res[0] === '#'){
+18         res = res.substring(1);
+19     }
+20     return res;
+21
+22     function LDR(node){
+23         if(node !== null && node.val !== undefined){
+24             res += "#" + node.val;
+25             if(node.left !== null){
+26                 LDR(node.left);
+27             }else{
+28                 res += "#N";
+29             }
+30             if(node.right !== null){
+31                 LDR(node.right);
+32             }else{
+33                 res += "#N";
+34             }
+35         }
+36     }
+37 };
+38
+39 /**
+40  * Decodes your encoded data to tree.
+41  *
+42  * @param {string} data
+43  * @return {TreeNode}
+44  */
+45 var deserialize = function(data) {
+46     var nodes = data.split('#');
+47     return LDR(0).node;
+48
+49     function LDR(i){
+50         if(nodes[i] !== undefined && nodes[i] !== "" && nodes[i] !== 'N'){
+51             var root = new TreeNode(parseInt(nodes[i]));
+52             i++;
+53             var res = LDR(i);
+54             i = res.i;
+55             root.left = res.node;
+56             res = LDR(i);
+57             i = res.i;
+58             root.right = res.node;
+59             return {node : root, i : i};
+60         }else{
+61             return {node : null, i : ++i};
+62         }
+63     }
+64 };
+
 
 
 })('use strict');
