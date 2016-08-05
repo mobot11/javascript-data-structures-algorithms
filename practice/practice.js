@@ -369,4 +369,60 @@ function isPermutation(string1, string2) {
 console.log(isPermutation('abc', 'cab'));
 console.log(isPermutation('abc', 'def'));
 
+
+
+// implement a binary search
+
+function mergeSort(array) {
+    if (array.length < 2) {
+        return array;
+    }
+    var mid = Math.floor(array.length / 2);
+    var left = array.split(0, mid);
+    var right = array.split(mid, array.length);
+
+    merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+    var items = [];
+    while(left.length && right.length) {
+        if(left[0] <= right[0]) {
+            items.push(left.shift());
+        } else {
+            items.push(right.shift());
+        }
+    }
+    while(left.length) {
+        items.push(left.shift());
+    }
+    while(right.length) {
+        items.push(right.shift());
+    }
+    return items;
+}
+
+function binarySearch(array,value) {
+    if(array.length === 1) {
+        return array;
+    }
+    var low = 0;
+    var high = array.length-1;
+    var mid;
+    var element;
+    while(low < high) {
+        mid = array.length >> 1;
+        element = array[mid];
+        if(element < value) {
+            low = mid + 1;
+        }
+        if(element > value) {
+            high = mid -1;
+        } else {
+            return mid;
+        }
+        return -1;
+    }
+}
+
 //
