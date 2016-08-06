@@ -428,3 +428,93 @@ function binarySearch(array,value) {
 //im just here so I wont get fined
 
 //
+
+var BinaryTree = function() {
+    var Node = function(element) {
+        this.left = null;
+        this.right = null;
+        this.element = element;
+    }
+
+    var root = null;
+}
+
+
+
+//code a doubly linked list
+
+var Node = function(data) {
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+}
+
+var DoublyLinkedList = function() {
+    this.length = 0;
+    this.head = null;
+    this.tail = null;
+}
+
+DoublyLinkedList.prototype.add = function(data) {
+    var node = new Node(data);
+    if (this.length === 0) {
+        this.head = node;
+        this.tail = node;
+    } else {
+        this.tail.next = node;
+        node.prev = this.tail;
+        this.tail = node;
+    }
+    this.length ++;
+    return true;
+}
+
+DoublyLinkedList.prototype.remove = function(position){
+    var node = this.head;
+    //break conditions, if position < = 0 or postion > list .length
+    if (position <=0 || position > this.length) {
+        return 'you fucked up';
+    }
+    if (position === 1) {
+        node = node.next;
+
+    if (head.next) {
+        this.tail = null;
+    } else {
+        this.tail = node;
+    }
+    }
+    else if (position === this.length) {
+        this.tail = this.tail.previous;
+        this.tail.next = null;
+    } else {
+        while (count < position) {
+            node = node.next;
+            count++;
+        }
+        prev = node.previous;
+        curr = node.next;
+        curr.prev = prev;
+        prev.next = curr;
+    }
+
+    this.length --;
+    return true;
+}
+ DoublyLinkedList.search = function(position) {
+     let node = this.head;
+     var count = 0;
+     if (position <= 0 || position > this.length) {
+         return 'you fucked up'
+     }
+
+     while(count < position) {
+         node = node.next;
+         count ++
+     }
+
+     return node;
+
+ }
+
+//
