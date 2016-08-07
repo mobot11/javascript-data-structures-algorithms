@@ -210,6 +210,14 @@ function printNode(value) {
 
 tree.inOrderTraverse(printNode);
 
+BinarySearchTree.findHeight = function() {
+    var node = root;
+    var height = 0;
+    if (node === null) {
+        return -1;
+    } else findHeight(node,c)
+}
+
 
 
 
