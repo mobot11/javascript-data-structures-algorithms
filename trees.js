@@ -18,7 +18,7 @@
     function BinarySearchTree() {
         //nodes are called edges in tree terminology
 
-        //key is how a treen node is known in tree terminology
+        //key is how a tree node is known in tree terminology
 
         var insertNode = function(node, newNode) {
             if (newNode.key < node.key) {
@@ -54,7 +54,7 @@
         // visits all the node of a binary search tree in ascending order
         //visits the nodes from smallest to largest
 
-        this.inOrderTraverse= function(callback) {
+        this.inOrderTraverse = function(callback) {
             inOrderTraverseNode(root, callback);
         };
 
