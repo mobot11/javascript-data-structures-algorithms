@@ -226,8 +226,31 @@ var array = [156, 235, 457, 21, 32, 43, 74, 75, 86, 97, 108, 149];
 console.log(rotatedBinarySearch(array, 75));
 console.log(rotatedBinarySearch(array, 156));
 console.log(rotatedBinarySearch(array, 149));
+console.log(rotatedBinarySearch(array, 108));
 
+//remove duplicates from an unsorted linked list
 
+function removeDuplicates(head) {
+    var values = {};
+    if (head === null) {
+        return null;
+    }
+    if (head.next === null) {
+        return true;
+    }
+    var curr = head;
+    var temp = head;
+    curr = curr.next;
+    while(curr) {
+        if (!values.hasOwnProperty(curr.value)) {
+            values[curr.value] = 1;
+            continue;
+        }
+        if (values.hasOwnProperty(curr.next.value)) {
+
+        }
+    }
+}
 
 
 
