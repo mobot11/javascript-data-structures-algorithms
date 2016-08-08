@@ -278,7 +278,7 @@ function rotatedSorted(array, item) {
     if (pivot > 0 && num >= array[0] && num <= array[pivot-1]) {
         return binarySearch(array, 0, pivot-1, num);
     } else {
-        return binarySearch(array, pvito, array.length-1, num);
+        return binarySearch(array, pivot, array.length-1, num);
     }
 
     function findPivot(array, item) {
@@ -298,7 +298,33 @@ function rotatedSorted(array, item) {
         }
         return 0;
     }
+
+    function binarySearch(array, start, end, item) {
+        if (num < array[start] || num > array[end]) {
+            return -1;
+        }
+        if (num === array[start]) {
+            return start;
+        }
+        if(num === array[end]) {
+            return end;
+        }
+
+        while (start < end) {
+            var mid = Math.floor((start + end) / 2);
+            if (array[mid] === item) {
+                return mid;
+            } else if (array[mid] < item) {
+                start = mid + 1;
+            } else {
+                end = mid -1;
+            }
+        }
+        return - 1;
+    }
 }
+
+
 
 
 
