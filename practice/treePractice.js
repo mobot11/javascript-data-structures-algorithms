@@ -261,6 +261,49 @@ function removeDuplicates(head) {
     }
 }
 
+//find a value in a rotated but sorted array
+
+function rotatedSorted(array, item) {
+    if (array.length === 0) {
+        return 'error, invalid array';
+    }
+
+    if (array[0] < array[array.length - 1]) {
+        return 'array is not rotated';
+    }
+
+    var pivot = findPivot(array);
+
+    //find the minimum value of the array
+    if (pivot > 0 && num >= array[0] && num <= array[pivot-1]) {
+        return binarySearch(array, 0, pivot-1, num);
+    } else {
+        return binarySearch(array, pvito, array.length-1, num);
+    }
+
+    function findPivot(array, item) {
+        var start = 0;
+        var end = array.length - 1;
+
+        while (start <= end) {
+            var mid = Math.floor((start + end) / 2);
+
+            if (array[mid] > array[mid + 1]) {
+                return mid + 1;
+            } else if (array[start] <= array[mid]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return 0;
+    }
+}
+
+
+
+
+
 
 
 
