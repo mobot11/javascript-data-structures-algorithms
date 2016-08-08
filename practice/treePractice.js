@@ -157,11 +157,11 @@ function rotatedBinarySearch(array, num) {
     if (array === null || array.length === 0) {
         return -1;
     }
-    if(array[0] === num) {
+    if (array[0] === num) {
         return 0;
     }
-    if (array[array.length-1] === num) {
-        return array.length-1;
+    if (array[array.length - 1] === num) {
+        return array.length - 1;
     }
     var pivot = findPivot(array);
     //if num is greater than value at smallest index and smaller than value at pivot -1
@@ -176,17 +176,18 @@ function rotatedBinarySearch(array, num) {
             return -1;
         }
 
-        if (array.length === 1 || array[0] < array[array.length -1]) {
+        if (array.length === 1 || array[0] < array[array.length - 1]) {
             return 0;
         }
 
-        var start = 0, end = array.length -1;
+        var start = 0,
+            end = array.length - 1;
         while (start <= end) {
             var mid = Math.floor((start + end) / 2);
-            if(array[mid] > array[mid+1]) {
+            if (array[mid] > array[mid + 1]) {
                 return mid + 1;
             } else if (array[start] <= array[mid]) {
-                start = mid +1;
+                start = mid + 1;
             } else {
                 end = mid - 1;
             }
@@ -199,7 +200,7 @@ function rotatedBinarySearch(array, num) {
             return -1;
         }
         if (start > end || start < 0 || end >= array.length) {
-            return('invalid arguments for start and end');
+            return ('invalid arguments for start and end');
         }
 
         if (num < array[start] || num > array[end]) {
@@ -207,7 +208,7 @@ function rotatedBinarySearch(array, num) {
         }
 
         while (start < end) {
-            mid = Math.floor((start+end) / 2);
+            mid = Math.floor((start + end) / 2);
             if (array[mid] === num) {
                 return mid;
             } else if (num < array[mid]) {
@@ -216,7 +217,7 @@ function rotatedBinarySearch(array, num) {
                 start = mid + 1;
             }
         }
-        return - 1;
+        return -1;
     }
 
 }
@@ -231,23 +232,31 @@ console.log(rotatedBinarySearch(array, 108));
 //remove duplicates from an unsorted linked list
 
 function removeDuplicates(head) {
+
     var values = {};
-    if (head === null) {
-        return null;
+
+    if (!head) {
+        return 'list is empty';
     }
-    if (head.next === null) {
+
+    if (!head.next) {
         return true;
     }
-    var curr = head;
-    var temp = head;
-    curr = curr.next;
-    while(curr) {
-        if (!values.hasOwnProperty(curr.value)) {
-            values[curr.value] = 1;
-            continue;
-        }
-        if (values.hasOwnProperty(curr.next.value)) {
 
+    let curr = head;
+
+    while (curr) {
+        if (!values.hasOwnProperty(curr.value)) {
+            values[curr.value] = 1
+        }
+        if (values.hasOwnProperty(curr.value)) {
+            if (curr.next !== null) {
+                curr.prev.next = curr.next;
+                curr.next.prev = curr.prev;
+            } else {
+                this.tail = curr.prev;
+                curr.prev.next = null;
+            }
         }
     }
 }
