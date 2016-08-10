@@ -42,11 +42,11 @@ var BinaryTree = function() {
         } else {
             addNode(curr, root);
         }
-    }
+    };
 
     this.inOrderTraverse = function(callback) {
         treeInOrderTraverse(root, callback);
-    }
+    };
 
     var treeInOrderTraverse = function(root, callback) {
         var node = root;
@@ -231,35 +231,6 @@ console.log(rotatedBinarySearch(array, 108));
 
 //remove duplicates from an unsorted linked list
 
-function removeDuplicates(head) {
-
-    var values = {};
-
-    if (!head) {
-        return 'list is empty';
-    }
-
-    if (!head.next) {
-        return true;
-    }
-
-    let curr = head;
-
-    while (curr) {
-        if (!values.hasOwnProperty(curr.value)) {
-            values[curr.value] = 1
-        }
-        if (values.hasOwnProperty(curr.value)) {
-            if (curr.next !== null) {
-                curr.prev.next = curr.next;
-                curr.next.prev = curr.prev;
-            } else {
-                this.tail = curr.prev;
-                curr.prev.next = null;
-            }
-        }
-    }
-}
 
 //find a value in a rotated but sorted array
 
@@ -324,7 +295,7 @@ function rotatedSorted(array, item) {
 }
 
 
-
+//
 
 
 
