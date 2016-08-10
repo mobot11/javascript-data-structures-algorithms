@@ -274,7 +274,6 @@ function rotatedSorted(array, item) {
 
     var pivot = findPivot(array);
 
-    //find the minimum value of the array
     if (pivot > 0 && num >= array[0] && num <= array[pivot-1]) {
         return binarySearch(array, 0, pivot-1, num);
     } else {
@@ -329,7 +328,7 @@ function rotatedSorted(array, item) {
 
 
 
-
+console.log('a,b,c' === 'a,b,c');
 
 
 
